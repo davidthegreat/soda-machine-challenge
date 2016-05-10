@@ -11,31 +11,36 @@ class SodaMachine
   end
 
   def find_soda(soda_brand)
-  found_soda =[]
-    if @sodas.include?(soda_brand)
-      pepsi =@sodas.pop(soda_brand)
-      found_soda << pepsi
-    else
-      nil
-    end
-    return found_soda
-    # if @sodas.price == 0.65
-    #   found_soda << @sodas
-    #   return true 
-    # else 
-    #   return nil
-    # end
-    # return found_soda
+    return @sodas.find {|soda| soda.brand == soda_brand}
+  # found_soda =[]
+  #   if @sodas.include?(soda_brand)
+  #     pepsi =@sodas.pop(soda_brand)
+  #     found_soda << pepsi
+  #   else
+  #     nil
+  #   end
+  #   return found_soda
+
   end
 
   def sell(soda_brand)
-    if !@sodas.include?(soda_brand)
-      return nil
-    end
+    soda = find_soda(soda_brand)
+    return nil if soda == nil
+    @cash += soda.price
+    @soda.delete(soda)
+    # if !@sodas.include?(soda_brand)
+    #   return nil
+    # end
   end
 
-  def cash
 
 
 
 end
+
+
+
+
+
+
+
